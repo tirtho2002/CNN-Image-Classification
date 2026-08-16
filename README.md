@@ -87,7 +87,9 @@ dataset/
 
 
 
-![Training and Validation Loss](images/5.png.png)
+![Training and Validation Loss](CNN-Image-Classification/images/5.png)
+
+
 
 ### 4. Data Preprocessing
 
