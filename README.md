@@ -87,8 +87,7 @@ dataset/
 
 
 
-![Training and Validation Loss](images/dataset 1.png)
-
+images/dataset 1.png
 
 
 ### 4. Data Preprocessing
