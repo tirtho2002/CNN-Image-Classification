@@ -84,4 +84,4 @@ dataset/
 └── trouser2.jpg
 loss.backward(), and optimizer.step().
 
-![Training and Validation Loss](images/5.png)
+![Training and Validation Loss](images/dataset 1.png)
