@@ -87,8 +87,7 @@ dataset/
 
 
 
-📷 INSERT IMAGE HERE — Custom Dataset
-
+![Training and Validation Loss](images/dataset 1.png)
 
 
 
