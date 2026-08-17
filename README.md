@@ -4,7 +4,7 @@ A Convolutional Neural Network (CNN) built in **PyTorch** to classify clothing i
 
 ---
 
-## 📌 Overview
+##  Overview
 
 This project implements an end-to-end image classification pipeline:
 
@@ -22,7 +22,7 @@ This project implements an end-to-end image classification pipeline:
 
 ---
 
-## 🗂️ Dataset
+##  Dataset
 
 [Fashion-MNIST](https://github.com/zalandoresearch/fashion-mnist) — 70,000 grayscale, 28×28 images across 10 clothing classes.
 
@@ -53,7 +53,7 @@ Split used: **48,000 train / 12,000 validation / 10,000 test**.
 
 ---
 
-## 🏗️ Model Architecture
+##  Model Architecture
 
 ```
 Input (1×28×28)
@@ -77,7 +77,7 @@ Linear(128→10)                                      → 10 class logits
 
 ---
 
-## 📊 Results
+## Results
 
 ### Training curves
 Training loss decreases steadily; validation loss plateaus after epoch ~5–6, indicating mild overfitting in later epochs.
@@ -135,7 +135,7 @@ See `report.pdf` for the full analysis of this generalization gap.
 
 ---
 
-## 📁 Repository Structure
+##  Repository Structure
 
 ```
 .
@@ -161,7 +161,7 @@ See `report.pdf` for the full analysis of this generalization gap.
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Requirements
 ```bash
@@ -186,7 +186,7 @@ model.eval()
 
 ---
 
-## 🔮 Future Improvements
+##  Future Improvements
 
 - Add dropout / batch normalization to reduce overfitting
 - Data augmentation (flips, rotations, translations) for better generalization
@@ -197,7 +197,3 @@ model.eval()
 
 This project is open-sourced under the [MIT License](LICENSE).
 
-## 🙏 Acknowledgements
-
-- [Fashion-MNIST](https://github.com/zalandoresearch/fashion-mnist) by Zalando Research
-- [PyTorch](https://pytorch.org/)
