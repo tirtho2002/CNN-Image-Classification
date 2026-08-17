@@ -2,10 +2,6 @@
 
 A Convolutional Neural Network (CNN) built in **PyTorch** to classify clothing images from the **Fashion-MNIST** dataset into 10 categories. The model is trained, evaluated on a held-out test set, and further stress-tested on custom real-world photos to study its generalization limits.
 
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
-![PyTorch](https://img.shields.io/badge/PyTorch-CNN-red)
-![License](https://img.shields.io/badge/License-MIT-green)
-
 ---
 
 ## 📌 Overview
@@ -197,9 +193,7 @@ model.eval()
 - Fine-tune on real-world photos to close the domain gap
 - Experiment with deeper architectures (ResNet-style blocks)
 
----
 
-## 📄 License
 
 This project is open-sourced under the [MIT License](LICENSE).
 
