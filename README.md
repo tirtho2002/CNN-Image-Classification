@@ -46,12 +46,12 @@ This project implements an end-to-end image classification pipeline:
 Split used: **48,000 train / 12,000 validation / 10,000 test**.
 
 <p align="center">
-  <img src="imgs/class_distribution.png" width="600"><br>
+  <img src="imgs/imgs/class_distribution.png" width="600"><br>
   <em>Class distribution across train/validation/test splits</em>
 </p>
 
 <p align="center">
-  <img src="imgs/sample_image.png" width="220"><br>
+  <img src="imgs/imgs/sample_image.png" width="220"><br>
   <em>Sample preprocessed training image</em>
 </p>
 
@@ -87,14 +87,14 @@ Linear(128→10)                                      → 10 class logits
 Training loss decreases steadily; validation loss plateaus after epoch ~5–6, indicating mild overfitting in later epochs.
 
 <p align="center">
-  <img src="imgs/loss_curve.png" width="420">
-  <img src="imgs/accuracy_curve.png" width="420">
+  <img src="imgs/imgs/loss_curve.png" width="420">
+  <img src="imgs/imgs/accuracy_curve.png" width="420">
 </p>
 
 ### Confusion matrix
 
 <p align="center">
-  <img src="imgs/confusion_matrix.png" width="500">
+  <img src="imgs/imgs/confusion_matrix.png" width="500">
 </p>
 
 ### Per-class performance (test set)
@@ -113,8 +113,8 @@ Training loss decreases steadily; validation loss plateaus after epoch ~5–6, i
 | Ankle boot | 0.97 | 0.96 | 0.97 |
 
 <p align="center">
-  <img src="imgs/per_class_metrics.png" width="500">
-  <img src="imgs/per_class_accuracy.png" width="420">
+  <img src="imgs/imgs/per_class_metrics.png" width="500">
+  <img src="imgs/imgs/per_class_accuracy.png" width="420">
 </p>
 
 **Key finding:** most confusion happens between visually similar upper-body garments (Shirt, T-shirt, Pullover, Coat), while shape-distinctive classes (Trouser, Sandal, Bag) are classified almost perfectly.
@@ -122,7 +122,7 @@ Training loss decreases steadily; validation loss plateaus after epoch ~5–6, i
 ### Qualitative predictions on test images
 
 <p align="center">
-  <img src="imgs/test_predictions_grid.png" width="600">
+  <img src="imgs/imgs/test_predictions_grid.png" width="600">
 </p>
 
 ---
@@ -132,7 +132,7 @@ Training loss decreases steadily; validation loss plateaus after epoch ~5–6, i
 The trained model was also tested on 10 custom photographs of real clothing items. Despite strong benchmark accuracy, it performed poorly on these out-of-distribution images (frequently predicting "Bag"), highlighting a **domain-shift gap** between clean benchmark data and real-world photos (background clutter, lighting, framing, resolution loss).
 
 <p align="center">
-  <img src="imgs/custom_predictions.png" width="700">
+  <img src="imgs/imgs/custom_predictions.png" width="700">
 </p>
 
 See `report.pdf` for the full analysis of this generalization gap.
@@ -145,9 +145,11 @@ See `report.pdf` for the full analysis of this generalization gap.
 .
 ├── README.md
 ├── 220150_CNN.ipynb        # Full notebook: data loading, model, training, evaluation
-├── report.pdf              # Detailed lab report (theory, results, analysis)
-├── report.tex              # LaTeX source of the report
-└── imgs/                   # All images used in this README
+├── dataset/                 # Fashion-MNIST data (downloaded via torchvision)
+├── model/                   # Saved trained model weights (220150.pth)
+├── report.pdf               # Detailed lab report (theory, results, analysis)
+├── report.tex                # LaTeX source of the report
+└── imgs/imgs/                # All images used in this README
     ├── sample_image.png
     ├── class_distribution.png
     ├── loss_curve.png
@@ -159,23 +161,7 @@ See `report.pdf` for the full analysis of this generalization gap.
     └── custom_predictions.png
 ```
 
-### 🖼️ Where each image goes
-
-Create a folder named **`imgs/`** in the root of your repo (same level as this README) and place the images with these **exact filenames** — the README above already links to them by these names, so nothing else needs to change once they're in place:
-
-| File to save as | Which image it is |
-|---|---|
-| `imgs/sample_image.png` | The single preprocessed grayscale training image (Dress example) |
-| `imgs/class_distribution.png` | The bar chart of train/val/test class counts |
-| `imgs/loss_curve.png` | Training vs. validation **loss** curve |
-| `imgs/accuracy_curve.png` | Training vs. validation **accuracy** curve |
-| `imgs/confusion_matrix.png` | The 10×10 confusion matrix heatmap |
-| `imgs/per_class_metrics.png` | Grouped bar chart of Precision/Recall/F1 per class |
-| `imgs/per_class_accuracy.png` | Bar chart of per-class accuracy vs. overall test accuracy |
-| `imgs/test_predictions_grid.png` | The 12-image grid of True vs. Predicted labels from the test set |
-| `imgs/custom_predictions.png` | The grid of 10 custom real-world photos with predictions |
-
-All 9 of these images are ready-made and attached alongside this README — just drop them straight into your repo's `imgs/` folder with the filenames above.
+> **Note:** image paths above use `imgs/imgs/...` to match this repo's current folder layout. If you later flatten that folder to a single `imgs/`, update the `src="imgs/imgs/..."` paths in this file to `src="imgs/..."`.
 
 ---
 
@@ -191,6 +177,16 @@ pip install torch torchvision matplotlib numpy pillow scikit-learn
 jupyter notebook 220150_CNN.ipynb
 ```
 The Fashion-MNIST dataset is downloaded automatically via `torchvision.datasets.FashionMNIST` on first run.
+
+### Use the saved model
+```python
+import torch
+from model_def import CNN  # or wherever the CNN class is defined
+
+model = CNN()
+model.load_state_dict(torch.load("model/220150.pth", map_location="cpu"))
+model.eval()
+```
 
 ---
 
